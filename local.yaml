@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: ./docker/postgres/Dockerfile
+    container_name: tw_db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5

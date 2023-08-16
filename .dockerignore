@@ -1,0 +1,6 @@
+/data
+local.yaml
+.pre-commit-config.yaml
+.gitignore
+README.md
+/tests
